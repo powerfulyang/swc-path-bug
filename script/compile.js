@@ -2,24 +2,24 @@ const swcCli = require('@swc/cli/lib/swc/dir');
 
 swcCli.default({
     swcOptions: {
+        '$schema': 'https://json.schemastore.org/swcrc',
         module: { type: 'commonjs' },
         jsc: {
-        target: 'es2021',
-        parser: { syntax: 'typescript', decorators: true, dynamicImport: true },
-        transform: {
-            legacyDecorator: true,
-            decoratorMetadata: true,
-            useDefineForClassFields: false
-        },
-        keepClassNames: true,
-        baseUrl: process.cwd(),
-        paths: {
-            '@utils/*': [ 'dist/utils/*' ],
-        }
+            target: 'es2021',
+            parser: { syntax: 'typescript', decorators: true, dynamicImport: true },
+            transform: {
+                legacyDecorator: true,
+                decoratorMetadata: true,
+                useDefineForClassFields: false
+            },
+            keepClassNames: true,
+            baseUrl: process.cwd(),
+            paths: {
+                '@utils/*': [ 'src/utils/*' ],
+            }
         },
         minify: false,
         swcrc: true,
-        '$schema': 'https://json.schemastore.org/swcrc',
         sourceMaps: true
     },
     cliOptions: {

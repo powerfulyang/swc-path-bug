@@ -6,20 +6,17 @@
 npm install
 ```
 
-## Commands
+## Reproduction steps
+
+Run the following command on Windows and it fails, run the same command on MacOS and presumably on Linux and it works:
 
 ```sh
-yarn dev # For running the code in development thanks to swc and nodemon
-
-yarn test # For running unit test
-yarn test:watch # For watching unit test
-
-yarn lint # For linting the code
-yarn lint:fix # For linting the code and fix issues
-
-yarn build # For building the code (there is no typechecking due to swc compiler)
-yarn type-check # For typechecking the code
-
-yarn start:cjs # For running the code builded in cjs
-yarn start:esm # For running the code builded in esm
+npm start
 ```
+
+On windows the module path being generated is absolute as well as wrong while on MacOS it is relative.
+
+### Workarounds
+
+1. I'm not sure I fully understand, but if you disable/remove `swcOptions.jsc.baseUrl` from the compile script, on Windows it suddenly starts working.
+2. What also seems to work is changing `swcOptions.jsc.paths` to `['@utils/*': [ 'dist/utils/*' ]]` because then the absolute path is pointing to the correct dir.
