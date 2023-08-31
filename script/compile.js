@@ -13,7 +13,7 @@ swcCli.default({
                 useDefineForClassFields: false
             },
             keepClassNames: true,
-            baseUrl: `\\\\?\\${process.cwd()}`,
+            baseUrl: process.cwd(),
             paths: {
                 '@utils/*': [ 'src/utils/*' ],
             }
